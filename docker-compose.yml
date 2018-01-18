@@ -21,6 +21,9 @@ services:
     command: ["bash", "-c", "/usr/bin/prepare.sh && exec dask-worker scheduler:8786"]
     volumes:
       - ./temp:/temp
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
   notebook:
     build:
       context: .
@@ -32,6 +35,9 @@ services:
       - ./work:/home/jovyan/work
       - ./temp:/temp
       - ./results:/results
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
   api:
     build:
       context: .
@@ -44,4 +50,7 @@ services:
       - ./work:/home/jovyan/work
       - ./temp:/temp
       - ./results:/results
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     

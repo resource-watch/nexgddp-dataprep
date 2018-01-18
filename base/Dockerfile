@@ -12,7 +12,7 @@ RUN conda create -n dask --yes -c conda-forge \
 ENV PATH=/opt/conda/envs/dask/bin:$PATH
 
 RUN pip install --upgrade pip
-RUN pip install --upgrade google-cloud-storage
+RUN pip install --upgrade google-cloud-storage boto3
 
 COPY base/prepare.sh /usr/bin/prepare.sh
 RUN chmod +x /usr/bin/prepare.sh

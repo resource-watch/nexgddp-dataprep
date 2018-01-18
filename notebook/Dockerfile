@@ -18,11 +18,11 @@ RUN conda create -n dask --yes -c conda-forge \
 ENV PATH=/opt/conda/envs/dask/bin:$PATH
 
 RUN pip install --upgrade pip
-RUN pip install --upgrade google-cloud-storage
+RUN pip install --upgrade google-cloud-storage boto3
 
 USER root
 COPY ./base/prepare.sh /usr/bin/prepare.sh
 RUN chmod +x /usr/bin/prepare.sh
 
 RUN fix-permissions /home/$NB_USER
-CMD ["bash", "-c", "/usr/bin/prepare.sh && start-notebook.sh"]
+CMD ["bash", "-c", "/usr/bin/prepare.sh && /usr/local/bin/start.sh /opt/conda/envs/dask/bin/jupyter-notebook"]

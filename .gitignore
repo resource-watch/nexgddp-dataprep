@@ -1,4 +1,5 @@
 work/.ipynb_checkpoints/*
+work/loca/.ipynb_checkpoints/*
 .cache
 .dask
 .ipython
